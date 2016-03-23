@@ -8,7 +8,7 @@ const sites = require(configFile);
 const getLabel = require('./getLabel.js');
 const debug = require('debug')('index');
 
-const weeklyApi = 'http://www.75team.com/weekly/admin/article.php?action=add';
+const weeklyApi = 'http://old.75team.com/weekly/admin/article.php?action=add';
 
 sites.forEach(site => {
     init(site)
@@ -22,7 +22,9 @@ sites.forEach(site => {
         });
 });
 
-//初始化context
+/**
+ * 初始化context
+ **/
 function init(site) {
     return Promise.resolve({site: site});
 }
@@ -31,8 +33,10 @@ function init(site) {
 function getRSS(context) {
     return new Promise((resolve, reject) => {
         request(context.site.url, {
-            timeout: 10000,
+            timeout: 100000,
+            //有的rss格式是压缩过的文件
             gzip: true,
+            //rss文件不能直接访问，设置以浏览器身份访问
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
             }
@@ -57,40 +61,67 @@ function parseXml (context) {
                 reject(err);
                 console.log(`解析内容出错：${context.site.url}`);
                 console.log(context.body);
-            } else{
-                context.articles = result.feed ? result.feed.entry : result.rss.channel[0].item;
-
-                //文章描述description的处理
-                context.articles.forEach(article => {
-                    article.title[0] = article.title[0]._ ? article.title[0]._ : article.title[0];
-                    let description = (article.content && article.content[0]) || (article.summary && article.summary[0]) || (article.description && article.description[0]) || '';
-                    if (typeof description != 'string') {
-                        description = description._;
-                    }
-                    description = description.replace(/<[^>]+>/g,"");
-                    article.description = description.substr(0, 400);
-
-                    article.link[0] = article.link[0].$ ? article.link[0].$.href : article.link[0];
-                });
-                //文章发布时间的处理
-                if (context.site.type == "atom") {
-                    context.articles.forEach(article => {
-                        article.published = article.published ? article.published[0] : article.updated[0];
-                    });
-                } else {
-                    context.articles.forEach(article => {article.published = article.pubDate;});
-                }
-                resolve(context);
+                return;
             }
+            if(context.site.type == 'atom') {
+                context = parseAtom(context, result);
+            } else {
+                context = parseRss(context, result);
+            }
+            context.articles.forEach(article => {
+            });
+
+            resolve(context);
         });
     });
+}
+
+function parseAtom (context, result) {
+    context.articles = result.feed.entry;
+    context.articles.forEach(article => {
+        article.published = article.published ? article.published[0] : article.updated[0];
+        article.title = article.title[0]._ ? article.title[0]._ : article.title[0];
+        let content = (article.content && article.content[0]) || '';
+                if(typeof content != 'string') {
+                    content = content._;
+                }
+                let description = content || (article.summary && article.summary[0]);
+                if (typeof description != 'string') {
+                    description = description._;
+                }
+
+                description = description.replace(/<[^>]+>/g, '');
+                article.description = description.substr(0, 400);
+                content = content.replace(/<[^>]+>/g, '');
+                article.content = content;
+                article.link = article.link[0].$.href;// ? article.link[0].$.href : article.link[0];
+    });
+
+    return context;
+}
+
+function parseRss (context, result) {
+    context.articles = result.rss.channel[0].item;
+    context.articles.forEach(article => {
+        article.published = article.pubDate;
+        article.title = article.title[0];
+        let content = (article.description && article.description[0]) || '';
+                if(typeof content != 'string') {
+                    content = content._;
+                }
+
+                content = content.replace(/<[^>]+>/g, '');
+                article.description = content.substr(0, 400);
+                article.content = content;
+                article.link = article.link[0];
+    });
+    return context;
 }
 
 //根据发布时间筛选出符合要求的内容
 function filterArticles (context) {
     context.site.lastTime = null;
-    console.log("articles = " + context.articles[0].title);
-    var lastTime = context.site.lastTime || (+new Date() - 3600*24*7*1000);
+    var lastTime = context.site.lastTime || (+new Date() - 3600 * 24 * 7 * 1000);
     context.articles = context.articles.filter(article => +new Date (article.published) > lastTime);
     return context;
 }
@@ -117,16 +148,16 @@ function postArticles (context) {
             uri: weeklyApi,
             method: 'POST',
             body: {
-                title: article.title[0],
-                url: article.link[0],
+                title: article.title,
+                url: article.link,
                 description: article.description,
                 provider: '梁幸芝Shero',
                 tags: tags
             },
             json: true
         };
-        if (process.env.DEBUG === 'index') {
-            console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
+        if (process.env.DEBUG) {
+            //console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
             return;
         }
         request(postData, (err, response, body) => {

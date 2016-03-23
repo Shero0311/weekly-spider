@@ -1,54 +1,38 @@
-const objlabels = require('../config/labels.json');
+const labels = require('../config/labels.json');
 const debug = require('debug')('label');
 
-function label(article) {
-    var titleret = '';
-    if(article.title) {
-        titletext = article.title;
-    }
-    var htmltext = JSON.stringify(article).replace(/<[^>]+>/g,"");
-    var labels = [];
-    for (var prop in objlabels) {
-        var count = 0;
-        var arrlabel = objlabels[prop];
-        var len = arrlabel.length;
-        for (var i = 0; i < len; i++) {
-            var pattern = new RegExp(arrlabel[i], 'gi');
-            if(titletext) {
-                var titleret = JSON.stringify(titletext).match(pattern);
-            }
-            var ret = htmltext.match(pattern);
-            if (ret) {
+function getLabel(article) {
+    return Object.keys(labels)
+        .map(label => stat(label, article))
+        .sort((a, b) => (b.count - a.count))
+        .filter(label => label.count > 4)
+        .slice(0, 5)
+        .map(label => label.label)
+        .join(',');
+}
+function stat(label, article) {
+    //相关性计算 title出现的次数*5 + content出现的次数*1
+    var relativity = labels[label]
+        .map(label => {
+            var titleMatchCount = getLabelCount(label, article.title);
+            var contMatchCount = getLabelCount(label, article.content);
+            return titleMatchCount * 5 + contMatchCount;
+        })
+        .reduce((a, b) => (a + b));
 
-                debug("标签是："+ pattern + "ret是：" + ret);
-                count += ret.length;
-                if (titleret) {
-                    count += 5;
-                }
-            }
-        }
-        if (count) {
-            labels.push({
-                label: prop,
-                count: count
-            });
-        }
-    }
+    relativity && debug(label + ', ' + relativity);
 
-    labels.sort(function(a, b) {
-        return b.count - a.count;
-    });
-
-    var flag = labels.length;
-    var tags = '';
-
-    if (flag > 0) {
-        labels = labels.filter(label => label.count > 4).slice(0,5).map(labelvalue => labelvalue.label);
-        tags = labels.join(",");
-        debug("tags = " + tags);
-        return tags;
-    }
-    return null;
+    return {
+        label: label,
+        count: relativity
+    };
 }
 
-module.exports = label;
+function getLabelCount(label, content) {
+    if(!content) return 0;
+    var pattern = new RegExp(label, 'gi');
+    var ret = content.match(pattern);
+    return ret ? ret.length : 0;
+}
+
+module.exports = getLabel;
