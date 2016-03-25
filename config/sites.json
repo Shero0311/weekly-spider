@@ -2,111 +2,142 @@
     {
         "url": "http://taobaofed.org/atom.xml",
         "type": "atom",
-        "lastTime": 1458729962478
+        "lastTime": 1458890627845
     },
     {
         "url": "http://www.w3ctrain.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458729956728
+        "lastTime": 1458877360997
     },
     {
         "url": "http://efe.baidu.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458729956535
+        "lastTime": 1458890611479
     },
     {
         "url": "http://fe.meituan.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458729956688
+        "lastTime": 1458890611509
     },
     {
         "url": "http://icodeit.org/atom.xml",
         "type": "atom",
-        "lastTime": 1458729957600
+        "lastTime": 1458890612916
     },
     {
         "url": "http://www.ruanyifeng.com/blog/atom.xml",
         "type": "atom",
-        "lastTime": 1458729956985
+        "lastTime": 1458890611759
     },
     {
         "url": "http://www.alloyteam.com/feed/",
         "type": "rss",
-        "lastTime": 1458729956268
+        "lastTime": 1458890611091
     },
     {
         "url": "http://fex.baidu.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458729956220
+        "lastTime": 1458890611044
     },
     {
         "url": "http://code.oneapm.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458729961470
+        "lastTime": 1458890615605
     },
     {
         "url": "http://www.w3cplus.com/rss.xml",
         "type": "rss",
-        "lastTime": 1458729956595
+        "lastTime": 1458877360834
     },
     {
         "url": "https://imququ.com/rss.html",
         "type": "rss",
-        "lastTime": 1458729956667
+        "lastTime": 1458890611669
     },
     {
         "url": "http://melonh.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458729957658
+        "lastTime": 1458890611602
     },
     {
         "url": "http://www.topcss.org/?feed=rss2",
         "type": "rss",
-        "lastTime": 1458729958236
+        "lastTime": 1458890613131
     },
     {
         "url": "https://www.qianduan.net/rss/",
         "type": "rss",
-        "lastTime": 1458715583251
+        "lastTime": 1458890611690
     },
     {
         "url": "http://jiongks.name/feed/",
         "type": "rss",
-        "lastTime": 1458729986907
+        "lastTime": 1458877370655
     },
     {
         "url": "https://imochen.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458729956743
+        "lastTime": 1458890611616
     },
     {
         "url": "https://www.phodal.com/blog/feeds/atom/",
         "type": "atom",
-        "lastTime": 1458729961040
+        "lastTime": 1458890613401
     },
     {
         "url": "http://qianduan.guru/feed.xml",
         "type": "rss",
-        "lastTime": 1458729957978
+        "lastTime": 1458890616462
     },
     {
         "url": "http://aotu.io/atom.xml",
         "type": "atom",
-        "lastTime": 1458729965008
+        "lastTime": 1458890624696
     },
     {
         "url": "http://ucren.com/blog/feed",
         "type": "rss",
-        "lastTime": 1458729956697
+        "lastTime": 1458877360881
     },
     {
         "url": "http://stylechen.com/feed",
         "type": "rss",
-        "lastTime": 1458729957025
+        "lastTime": 1458890611531
     },
     {
         "url": "http://blog.h5jun.com/rss.html",
         "type": "rss",
-        "lastTime": 1458729956349
+        "lastTime": 1458890611591
+    },
+    {
+        "url": "https://blog.coding.net/blogs/rss",
+        "type": "rss",
+        "lastTime": 1458890611725
+    },
+    {
+        "url": "http://pinggod.com/atom.xml",
+        "type": "atom",
+        "lastTime": 1458890613228
+    },
+    {
+        "url": "http://yanhaijing.com/rss.xml",
+        "type": "rss",
+        "lastTime": 1458890616752
+    },
+    {
+        "url": "http://hectorguo.com/feed.xml",
+        "type": "rss",
+        "lastTime": 1458890612859
+    },
+    {
+        "url": "http://www.jianshu.com/users/e64ad9fba4da/latest_articles",
+        "type": "html",
+        "option": {
+            "article": ".article-list li",
+            "title": ".title a",
+            "link": ".title a@href",
+            "published": ".time@data-shared-at"
+        },
+        "lastTime": 1458890611295
     }
 ]

@@ -14,6 +14,7 @@
   "author": "liangxingzhi@360.cn",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^0.20.0",
     "debug": "^2.2.0",
     "request": "^2.69.0",
     "xml2js": "^0.4.16"

@@ -1,0 +1,37 @@
+<feed>
+    <title>
+    <![CDATA[ Taobao FED | 淘宝前端团队 ]]>
+</title>
+<subtitle>
+    <![CDATA[ 淘宝前端团队（FED） ]]>
+</subtitle>
+<link href="/atom.xml" rel="self"/>
+<link href="http://taobaofed.org/"/>
+<updated>2016-03-23T05:07:41.000Z</updated>
+<id>http://taobaofed.org/</id>
+<author>
+    <name>
+        <![CDATA[ Taobao FED ]]>
+    </name>
+</author>
+<generator uri="http://hexo.io/">Hexo</generator>
+<entry>
+    <title>
+        <![CDATA[ 一个前端的自我修养 ]]>
+    </title>
+    <link href="http://taobaofed.org/blog/2016/03/23/the-growth-of-front-end/"/>
+    <id>
+        http://taobaofed.org/blog/2016/03/23/the-growth-of-front-end/
+    </id>
+    <published>2016-03-23T04:30:27.000Z</published>
+    <updated>2016-03-23T05:07:41.000Z</updated>
+    <content type="html"><![CDATA[
+        <p><img src="https://img.alicdn.com/tps/TB1x3hvMXXXXXcrXFXXXXXXXXXX-900-500.jpg" alt="一个前端的自我修养"></p> <p>今天给大家分享的主题是前端的自我成长，这是一个关于成长的话题。</p> <p>很多人都有这样的感觉：听了很多技术圈子的分享，有的有深度，有的循循善诱，深入浅出，但是呢，几年下来，到底哪些用上了，哪些对自己真的有帮助了?反而有些模糊。</p> <p>2015 年我在不同的场合分享了很多内容：有移动端的性能、有适配、有 Web vs Native，也有 hybrid，但是其实我一直比较担心，真正有深度的内容，其实面向的是比较小众的群体，比如说]]>
+            </content>
+<summary type="html">
+    <![CDATA[
+    <p><img src="https://img.alicdn.com/tps/TB1x3hvMXXXXXcrXFXXXXXXXXXX-900-500.jpg" alt="一个前端的自我修养"></p> <p>今天给大家分享的主题是前端的自我成长，这是一个关于成长的话题。</p>
+    ]]>
+</summary>
+    </entry>
+</feed>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>FEX 百度 Web 前端研发部</title>
+        <description></description>      
+        <link>http://fex.baidu.com</link>
+        <atom:link href="http://fex.baidu.com/feed.xml" rel="self" type="application/rss+xml" />
+            <item>
+                <title>FEX 技术周刊 - 2016/03/21</title>
+                <description>著名 Android 公众号: AndroidDeveloper「googdev」的作者分享自己写 blog 的历程，赞心得：如果你还没有写博客，那从现在开始开通个博客，走出第一步，如果你已经开始写博客了，不要去奢望靠写博客去赚钱，安心的写博客提升自己能力，总结经验，把它看成一种投资自己的手段，别把目标搞错了，也许有一天你会突然发现，原来你已经走了这么远，而且还有意外收获！</description>
+                <pubDate>Mon, 21 Mar 2016 00:00:00 +0000</pubDate>
+                <link>http://fex.baidu.com/blog/2016/03/fex-weekly-21//</link>
+                <guid isPermaLink="true">http://fex.baidu.com/blog/2016/03/fex-weekly-21/</guid>
+            </item>
+            <item>
+                <title>FEX 技术周刊 - 2016/03/14</title>
+                <description>么评价真阿当的前端收费收徒计划</description>
+                <pubDate>Mon, 14 Mar 2016 00:00:00 +0000</pubDate>
+                <link>http://fex.baidu.com/blog/2016/03/fex-weekly-14//</link>
+                <guid isPermaLink="true">http://fex.baidu.com/blog/2016/03/fex-weekly-14/</guid>
+            </item>
+  </channel>
+</rss>
