@@ -25,5 +25,6 @@
     "动画": ["动画", "(animation|keyframes|transition)"],
     "测试": ["(单元|代码)测试", "(Karma|mocha|sinon)"],
     "工具": ["工具"],
-    "服务端": ["(PHP|nginx|apache)"]
+    "服务端": ["(PHP|nginx|apache)"],
+    "架构": ["架构"]
 }

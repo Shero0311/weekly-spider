@@ -57,10 +57,20 @@ function parseXml (context) {
     let parser = require(`./parser/${context.site.type}.js`);
     return parser(context.body, context.site.option).then(articles => {
         context.articles = articles;
+        context = fixLink(context);
         return context;
     });
 }
 
+function fixLink (context) {
+    const url = require('url');
+    if (context.site.type == 'html') {
+        context.articles.forEach(article => {
+            article.link = url.resolve(context.site.url, article.link);
+        });
+    }
+    return context ;
+}
 
 //根据发布时间筛选出符合要求的内容
 function filterArticles (context) {

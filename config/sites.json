@@ -2,7 +2,7 @@
     {
         "url": "http://taobaofed.org/atom.xml",
         "type": "atom",
-        "lastTime": 1458890627845
+        "lastTime": 1458891853621
     },
     {
         "url": "http://www.w3ctrain.com/atom.xml",
@@ -12,37 +12,37 @@
     {
         "url": "http://efe.baidu.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458890611479
+        "lastTime": 1458891829111
     },
     {
         "url": "http://fe.meituan.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458890611509
+        "lastTime": 1458891829233
     },
     {
         "url": "http://icodeit.org/atom.xml",
         "type": "atom",
-        "lastTime": 1458890612916
+        "lastTime": 1458891832431
     },
     {
         "url": "http://www.ruanyifeng.com/blog/atom.xml",
         "type": "atom",
-        "lastTime": 1458890611759
+        "lastTime": 1458891829554
     },
     {
         "url": "http://www.alloyteam.com/feed/",
         "type": "rss",
-        "lastTime": 1458890611091
+        "lastTime": 1458891829170
     },
     {
         "url": "http://fex.baidu.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458890611044
+        "lastTime": 1458891829839
     },
     {
         "url": "http://code.oneapm.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458890615605
+        "lastTime": 1458891843146
     },
     {
         "url": "http://www.w3cplus.com/rss.xml",
@@ -52,22 +52,22 @@
     {
         "url": "https://imququ.com/rss.html",
         "type": "rss",
-        "lastTime": 1458890611669
+        "lastTime": 1458891829624
     },
     {
         "url": "http://melonh.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458890611602
+        "lastTime": 1458891829575
     },
     {
         "url": "http://www.topcss.org/?feed=rss2",
         "type": "rss",
-        "lastTime": 1458890613131
+        "lastTime": 1458891830873
     },
     {
         "url": "https://www.qianduan.net/rss/",
         "type": "rss",
-        "lastTime": 1458890611690
+        "lastTime": 1458891829733
     },
     {
         "url": "http://jiongks.name/feed/",
@@ -77,22 +77,22 @@
     {
         "url": "https://imochen.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458890611616
+        "lastTime": 1458891829329
     },
     {
         "url": "https://www.phodal.com/blog/feeds/atom/",
         "type": "atom",
-        "lastTime": 1458890613401
+        "lastTime": 1458891830075
     },
     {
         "url": "http://qianduan.guru/feed.xml",
         "type": "rss",
-        "lastTime": 1458890616462
+        "lastTime": 1458891830500
     },
     {
         "url": "http://aotu.io/atom.xml",
         "type": "atom",
-        "lastTime": 1458890624696
+        "lastTime": 1458891229986
     },
     {
         "url": "http://ucren.com/blog/feed",
@@ -102,32 +102,42 @@
     {
         "url": "http://stylechen.com/feed",
         "type": "rss",
-        "lastTime": 1458890611531
+        "lastTime": 1458891830795
     },
     {
         "url": "http://blog.h5jun.com/rss.html",
         "type": "rss",
-        "lastTime": 1458890611591
+        "lastTime": 1458891829301
     },
     {
         "url": "https://blog.coding.net/blogs/rss",
         "type": "rss",
-        "lastTime": 1458890611725
+        "lastTime": 1458891829686
     },
     {
         "url": "http://pinggod.com/atom.xml",
         "type": "atom",
-        "lastTime": 1458890613228
+        "lastTime": 1458891832105
     },
     {
         "url": "http://yanhaijing.com/rss.xml",
         "type": "rss",
-        "lastTime": 1458890616752
+        "lastTime": 1458891835010
     },
     {
         "url": "http://hectorguo.com/feed.xml",
         "type": "rss",
-        "lastTime": 1458890612859
+        "lastTime": 1458891830304
+    },
+    {
+        "url": "http://zhuanlan-rss.songchenwen.com/rss/browsnet",
+        "type": "rss",
+        "lastTime": 1458891829645
+    },
+    {
+        "url": "http://zhuanlan-rss.songchenwen.com/rss/haochuan",
+        "type": "rss",
+        "lastTime": 1458891829915
     },
     {
         "url": "http://www.jianshu.com/users/e64ad9fba4da/latest_articles",
@@ -138,6 +148,6 @@
             "link": ".title a@href",
             "published": ".time@data-shared-at"
         },
-        "lastTime": 1458890611295
+        "lastTime": 1458891829504
     }
 ]

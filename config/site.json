@@ -2,6 +2,17 @@
     {
         "url": "http://taobaofed.org/atom.xml",
         "type": "atom",
-        "lastTime": 1458616517144
+        "lastTime": 1458899116816
+    },
+    {
+        "url": "http://www.jianshu.com/users/e64ad9fba4da/latest_articles",
+        "type": "html",
+        "option": {
+            "article": ".article-list li",
+            "title": ".title a",
+            "link": ".title a@href",
+            "published": ".time@data-shared-at"
+        },
+        "lastTime": 1458899128613
     }
 ]
