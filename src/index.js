@@ -4,6 +4,8 @@ const request = require('request');
 const fs = require('fs');
 const configFile = __dirname + '/../config/sites.json';
 const sites = require(configFile);
+const timeFile = __dirname + '/../config/lastTime.json';
+const lastTimes = require(timeFile);
 const getLabel = require('./getLabel.js');
 const debug = require('debug')('index');
 
@@ -28,7 +30,9 @@ function init(site) {
     return Promise.resolve({site: site});
 }
 
-//用request获取rss
+/*
+ * 用request获取rss数据
+ * */
 function getRSS(context) {
     return new Promise((resolve, reject) => {
         request(context.site.url, {
@@ -51,8 +55,9 @@ function getRSS(context) {
         });
     });
 }
-
-//获取到的rss数据是xml格式，转换格式成json对象
+/*
+ *获取到的rss数据是xml或者其他格式，转换格式成json格式
+ * */
 function parseXml (context) {
     let parser = require(`./parser/${context.site.type}.js`);
     return parser(context.body, context.site.option).then(articles => {
@@ -71,20 +76,25 @@ function fixLink (context) {
     }
     return context ;
 }
+/*
+ * 根据发布时间筛选出符合要求的内容
+ * */
 
-//根据发布时间筛选出符合要求的内容
 function filterArticles (context) {
-    //context.site.lastTime = null;
-    var lastTime = context.site.lastTime || (+new Date() - 3600 * 24 * 7 * 1000);
+    //lastTimes[context.site.url] = null;
+    var lastTime = lastTimes[context.site.url] || (+new Date() - 3600 * 24 * 7 * 1000);
     context.articles = context.articles.filter(article => +new Date (article.published) > lastTime);
     return context;
 }
 
-//标记网站访问时间
+/*
+ * 标记网站访问时间
+ * */
 function setLastTime(context) {
-    context.site.lastTime = +new Date();
+    var url = context.site.url;
+    lastTimes[url] = +new Date();
     return new Promise((resolve, reject) => {
-        fs.writeFile(configFile, JSON.stringify(sites, null, 4), err => {
+        fs.writeFile(timeFile, JSON.stringify(lastTimes, null, 4), err => {
             if (err) {
                 return reject(err);
             }
@@ -93,9 +103,10 @@ function setLastTime(context) {
     });
 }
 
-//将符合要求的内容发送到文章推荐的接口
+/*
+ * 将符合要求的内容发送到文章推荐的接口
+ * */
 function postArticles (context) {
-    //console.log(context.articles);
     context.articles.forEach(article => {
         //调用标签获取函数
         var tags = getLabel(article);
@@ -110,6 +121,7 @@ function postArticles (context) {
             console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
             return;
         }
+        console.log(`文章标题是：${article.title}`);
         request({
             uri: weeklyApi,
             method: 'POST',
