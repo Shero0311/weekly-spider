@@ -121,7 +121,7 @@ function postArticles (context) {
             console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
             return;
         }
-        console.log(`文章标题是：${article.title}`);
+        console.log(`推送文章：${article.title}`);
         request({
             uri: weeklyApi,
             method: 'POST',
