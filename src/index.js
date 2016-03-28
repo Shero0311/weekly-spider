@@ -74,7 +74,7 @@ function fixLink (context) {
 
 //根据发布时间筛选出符合要求的内容
 function filterArticles (context) {
-    context.site.lastTime = null;
+    //context.site.lastTime = null;
     var lastTime = context.site.lastTime || (+new Date() - 3600 * 24 * 7 * 1000);
     context.articles = context.articles.filter(article => +new Date (article.published) > lastTime);
     return context;
