@@ -82,7 +82,9 @@ function fixLink (context) {
 
 function filterArticles (context) {
     //lastTimes[context.site.url] = null;
-    var lastTime = lastTimes[context.site.url] || (+new Date() - 3600 * 24 * 7 * 1000);
+    var times = lastTimes[context.site.url] || 0;
+    var beforeSeven = +new Date() - 3600 * 24 * 7 * 1000;
+    var lastTime = Math.max(times, beforeSeven);
     context.articles = context.articles.filter(article => +new Date (article.published) > lastTime);
     return context;
 }
