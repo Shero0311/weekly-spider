@@ -120,5 +120,13 @@
             "link": ".title a@href",
             "published": ".time@data-shared-at"
         }
+    },
+    {
+        "url": "http://www.zhangxinxu.com/wordpress/feed/",
+        "type": "rss"
+    },
+    {
+        "url": "http://www.barretlee.com/rss2.xml",
+        "type": "rss"
     }
 ]

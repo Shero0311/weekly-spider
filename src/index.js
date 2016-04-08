@@ -3,13 +3,22 @@
 const request = require('request');
 const fs = require('fs');
 const configFile = __dirname + '/../config/sites.json';
+const timeFile = __dirname + '/../runtime/lastTime.json';
 const sites = require(configFile);
-const timeFile = __dirname + '/../config/lastTime.json';
-const lastTimes = require(timeFile);
 const getLabel = require('./getLabel.js');
 const debug = require('debug')('index');
 
 const weeklyApi = 'http://old.75team.com/weekly/admin/article.php?action=add';
+
+/**
+ * 获取上次抓取时间
+ */
+let lastTimes = {};
+try {
+    lastTimes = require(timeFile);
+} catch(ex) {
+    console.warn('警告：没有发现抓取记录。');
+}
 
 sites.forEach(site => {
     init(site)
