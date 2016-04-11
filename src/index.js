@@ -146,9 +146,9 @@ function postArticles (context) {
         //调用标签获取函数
         var tags = getLabel(article);
         let postData = {
-            title: article.title,
+            title: article.title.trim(),
             url: article.link,
-            description: article.description,
+            description: article.description.trim(),
             provider: '梁幸芝Shero',
             tags: tags
         };
