@@ -8,20 +8,51 @@ const sites = require(configFile);
 const getLabel = require('./getLabel.js');
 const debug = require('debug')('index');
 
+let lastTimes = {};
+const threadNum = 5;
 const weeklyApi = 'http://old.75team.com/weekly/admin/article.php?action=add';
 
+run();
+
 /**
- * 获取上次抓取时间
+ * 入口
  */
-let lastTimes = {};
-try {
-    lastTimes = require(timeFile);
-} catch(ex) {
-    console.warn('警告：没有发现抓取记录。');
+function run() {
+
+    //获取上次抓取时间
+    try {
+        lastTimes = require(timeFile);
+    } catch(ex) {
+        console.log(ex);
+        console.warn('警告：没有发现抓取记录。');
+    }
+
+    //启动多个线程抓取
+    const length = Math.ceil(sites.length / threadNum);
+    const chunks = new Array(threadNum).fill(1).map((_, i) => {
+        return sites.slice(i * length, (i + 1) * length);
+    });
+    Promise.all(chunks.map(sites => worker(sites)))
+        .then(saveCrawlTime) //完成后记录抓取时间
+        .then(() => console.log('done'));
 }
 
-sites.forEach(site => {
-    init(site)
+/**
+ * run worker
+ */
+function worker(sites) {
+    return sites.reduce(
+        (p, site) => p.then(() => crawlSite(site)),
+        Promise.resolve()
+    );
+}
+
+/**
+ * 处理指定网站
+ */
+function crawlSite(site) {
+    console.log(`开始抓取网站 ${site.url}`);
+    return init(site)
         .then(getRSS)
         .then(parseXml)
         .then(filterArticles)
@@ -30,7 +61,7 @@ sites.forEach(site => {
         .catch(ex => {
             console.log(ex);
         });
-});
+}
 
 /**
  * 初始化context
@@ -104,14 +135,7 @@ function filterArticles (context) {
 function setLastTime(context) {
     var url = context.site.url;
     lastTimes[url] = +new Date();
-    return new Promise((resolve, reject) => {
-        fs.writeFile(timeFile, JSON.stringify(lastTimes, null, 4), err => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(context);
-        });
-    });
+    return Promise.resolve(context);
 }
 
 /*
@@ -145,3 +169,12 @@ function postArticles (context) {
         });
     });
 }
+
+/**
+ * 保存每个网站抓取时间的记录
+ */
+function saveCrawlTime() {
+    let content = JSON.stringify(lastTimes, null, 4);
+    fs.writeFile(timeFile, content, err => err && console.log(err));
+}
+
