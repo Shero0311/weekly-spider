@@ -128,5 +128,81 @@
     {
         "url": "http://www.barretlee.com/rss2.xml",
         "type": "rss"
+    },
+    {
+        "url": "https://github.com/cssmagic/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/fouber/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/amfe/article/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/lifesinger/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/xufei/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/tmallfe/tmallfe.github.io/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/gf-rd/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/livoras/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/kuitos/kuitos.github.io/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/yisibl/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/wintercn/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/camsong/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/riskers/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/hax/hax.github.com/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/Lucifier129/Lucifier129.github.io/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/nimojs/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/fool2fish/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/fwon/blog/issues",
+        "type": "github"
+    },
+    {
+        "url": "https://github.com/zhouwenbin/blog/issues",
+        "type": "github"
     }
 ]
