@@ -148,7 +148,7 @@ function postArticles (context) {
         let postData = {
             title: article.title.trim(),
             url: article.link,
-            description: article.description.trim(),
+            description: article.description,
             provider: '梁幸芝Shero',
             tags: tags
         };
