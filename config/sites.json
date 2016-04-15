@@ -204,5 +204,9 @@
     {
         "url": "https://github.com/zhouwenbin/blog/issues",
         "type": "github"
+    },
+    {
+        "url": "http://blog.csdn.net/aimingoo/rss/list",
+        "type": "rss"
     }
 ]
